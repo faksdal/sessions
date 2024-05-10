@@ -1,7 +1,7 @@
 Goals for the sessions-project:
-	- read a html file and extract information about sessions
-	- find sessions based on a search for observatory name (e.g. "Nn")
-	- print the search to screen or file
+	- 	read a html file and extract information about sessions
+	- 	find sessions based on a search for observatory name (e.g. "Nn")
+	- 	print the search to screen or file
 
 To accomplish this, I need to be able to:
 	-	open an input file
