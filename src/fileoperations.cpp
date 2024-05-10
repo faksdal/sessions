@@ -14,7 +14,7 @@
 //	of the input file.
 //
 //	It also gives an error if opening the files don't work out
-fileoperations::fileoperations(string _inputFileName, string _outputFileName)
+fileoperations::fileoperations(string _inputFileName, string _outputFileName, string _searchTermsArray[MAXSEARCHTERMS])
 {
 
 	// assign filenames to object variables
@@ -54,6 +54,11 @@ fileoperations::fileoperations(string _inputFileName, string _outputFileName)
 
 	//	update current file pointer positions
 	//updateFilepointerPositions();
+
+
+	for(int i = 0; i < MAXSEARCHTERMS; i++){
+		cout << "Search term " << i+1 << ": " << _searchTermsArray[i] << endl;
+	}
 }
 
 

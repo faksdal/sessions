@@ -17,6 +17,8 @@
 
 using namespace std;
 
+#define	MAXSEARCHTERMS	2
+
 
 
 inline bool exists(const std::string& name)	{
@@ -52,7 +54,7 @@ protected:
 public:
 	bool			eof;
 
-	fileoperations(string _inputFileName, string _outputFileName);
+	fileoperations(string _inputFileName, string _outputFileName, string _searchTermsArray[MAXSEARCHTERMS]);
 	virtual ~fileoperations();
 
 	//inline unsigned long	getInputFileSize(void)			{ return inputFileSize;			}
