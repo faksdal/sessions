@@ -1,0 +1,4 @@
+sessions
+./obj/*.o
+*.o
+
