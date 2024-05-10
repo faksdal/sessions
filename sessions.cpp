@@ -56,23 +56,35 @@ int main(int argc, char **argv)
 	while((c = getopt_long(argc, argv, shortOptions, longOptions, &optionIndex)) != -1){
 		switch(c){
 			case 'I':	{
-							//cout << "Include " << optarg << endl;
 							searchStringSet = true;
 							searchStringArray[searchArrayIndex] = optarg;
-							cout << "Search string added: " << searchStringArray[searchArrayIndex++] << endl;
+							cout << "...search string added: " << searchStringArray[searchArrayIndex++] << endl;
 							//searchArrayIndex++;
 							break;
 						}
 			case 'i':	{
-							//cout << "Inputfile " << optarg << endl;
+							if(!exists(optarg)){
+								cout << "Input file " << optarg << " does not exist!" << endl;
+								cout << "Exiting..." << endl;
+								break;
+							}
 							inputFilename = optarg;
 							inputFilenameSet = true;
+							cout << "Input file name set to " << inputFilename << endl;
+
 							break;
 						}
 			case 'o':	{
-							//cout << "Outputfile " << optarg << endl;
+							if(exists(optarg)){
+								cout << optarg << " exists! Overwrite? y/n: ";
+								char c;
+								cin >> c;
+								if(c == 'n')
+									exit(-1);
+							}
 							outputFilename = optarg;
 							outputFilenameSet = true;
+							cout << "Output file name set to " << outputFilename << endl;
 							break;
 						}
 			case 'h':	{
@@ -86,51 +98,22 @@ int main(int argc, char **argv)
 		}	//end of getopt() switch statement
 	}	// end of while-loop
 
-	if(inputFilenameSet)
-		cout << "Input file name set to: " << inputFilename << endl;
-	if(outputFilenameSet)
-			cout << "Output file name set to: " << outputFilename << endl;
 
 
-	/*
+
+
 	//	create an object of type fileoperations, calling the constructor
 	//	of the class
-	if(inputFilenameSet && outputFilenameSet){
-		cout << "Creating class object..." << endl;
-		fileoperations fo(inputFilename.c_str(), outputFilename.c_str());
-	}
-
-	else{
-		cout << "Missing parameters..." << endl;
-	}
-	*/
-
-	//	if we make it here, we know the user has provided us with
-	//	good info to proceed
 	if(inputFilenameSet && outputFilenameSet && searchStringSet){
-		cout << "Number of included search terms: " << searchArrayIndex << endl;
 		cout << "Creating class object..." << endl;
-		fileoperations fo(inputFilename.c_str(), outputFilename.c_str());
-
-		//cout << "Input file, output file and search strings are set!" << endl;
-		//cout << "We are good to proceed." << endl;
-
-		unsigned long	searchPoint = 0L;
-
-		for(short i = 0; i < searchArrayIndex; i++){
-			while(!fo.eof){
-				cout << "searchPoint: " << searchPoint << endl;
-				cout	<< "Search term " << searchStringArray[i] << " is found at position "
-						<< (searchPoint = fo.find(searchPoint, searchStringArray[i])) << " in " << fo.getInputFileName(false) << endl;
-				cout << "searchPoint: " << searchPoint << endl;
-				searchPoint += searchStringArray[i].length();
-				cout << "searchPoint: " << searchPoint << endl;
-			}
-		}
+		//fileoperations fo(inputFilename.c_str(), outputFilename.c_str());
 	}
+
 	else{
 		cout << "Missing parameters..." << endl;
 	}
+
+
 
     return(0);
 }

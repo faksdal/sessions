@@ -19,6 +19,13 @@ using namespace std;
 
 
 
+inline bool exists(const std::string& name)	{
+												struct stat buffer;
+												return (stat (name.c_str(), &buffer) == 0);
+											}
+
+
+
 class fileoperations {
 
 private:
@@ -32,13 +39,13 @@ private:
 	ofstream	outputFile;
 
 
-	string	readHmtlTag(string _tag);
-	string	skipInitialWhitespace(string _stringToSkip);
-	void	updateFilepointerPositions(void);
+	//string	readHmtlTag(string _tag);
+	//string	skipInitialWhitespace(string _stringToSkip);
+	//void	updateFilepointerPositions(void);
 
-	inline bool exists(const std::string& name) {	struct stat buffer;
+	/*inline bool exists(const std::string& name) {	struct stat buffer;
 													return (stat (name.c_str(), &buffer) == 0);
-												}
+												}*/
 
 protected:
 
@@ -48,16 +55,16 @@ public:
 	fileoperations(string _inputFileName, string _outputFileName);
 	virtual ~fileoperations();
 
-	inline unsigned long	getInputFileSize(void)			{ return inputFileSize;			}
-	inline unsigned long	getCurrentInputFilePos(void)	{ return currentInputFilePos;	}
-	inline unsigned long	getCurrentOutputFilePos(void)	{ return currentOutputFilePos;	}
+	//inline unsigned long	getInputFileSize(void)			{ return inputFileSize;			}
+	//inline unsigned long	getCurrentInputFilePos(void)	{ return currentInputFilePos;	}
+	//inline unsigned long	getCurrentOutputFilePos(void)	{ return currentOutputFilePos;	}
 
-	string getOutputFileName(bool _printToScreen);
-	string getInputFileName(bool _printToScreen);
+	//string getOutputFileName(bool _printToScreen);
+	//string getInputFileName(bool _printToScreen);
 
-	void			readFile(void);
-	unsigned long	find(unsigned long _startPosition, string _searchString);
-	string			fread(unsigned long _startPosition, unsigned long _nbytes);
+	//void			readFile(void);
+	//unsigned long	find(unsigned long _startPosition, string _searchString);
+	//string			fread(unsigned long _startPosition, unsigned long _nbytes);
 
 };
 

@@ -37,7 +37,7 @@ fileoperations::fileoperations(string _inputFileName, string _outputFileName)
 
 	// if outputfile exists, present the user with a choice
 	if(exists(outputFileName)){
-		cout << outputFileName << " exists! Overwrite? y/n: ";
+		cout << outputFileName << " exists! Really want to overwrite? y/n: ";
 		char c;
 		cin >> c;
 		if(c == 'n')
@@ -53,7 +53,7 @@ fileoperations::fileoperations(string _inputFileName, string _outputFileName)
 	}
 
 	//	update current file pointer positions
-	updateFilepointerPositions();
+	//updateFilepointerPositions();
 }
 
 
