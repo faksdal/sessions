@@ -1,0 +1,16 @@
+Goals for the sessions-project:
+	- read a html file and extract information about sessions
+	- find sessions based on a search for observatory name (e.g. "Nn")
+	- print the search to screen or file
+
+To accomplish this, I need to be able to:
+	-	open an input file
+	-	search the input file for a given string
+	-	return information regarded that search string. This may not only be the
+		specific string, but also include information both before and after the string.
+		Typically information about session date, time and other important stuff.
+	-	parse input file, we want to exclude the html-tags in the result
+	-	print the result to an output file or screen
+
+
+
