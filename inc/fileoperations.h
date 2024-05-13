@@ -17,7 +17,7 @@
 
 using namespace std;
 
-#define	MAXSEARCHTERMS	2
+#define	MAXSEARCHTERMS	13
 
 
 
@@ -42,8 +42,8 @@ private:
 
 
 	//string	readHmtlTag(string _tag);
-	//string	skipInitialWhitespace(string _stringToSkip);
-	//void	updateFilepointerPositions(void);
+	string	skipInitialWhitespace(string _stringToSkip);
+	void	updateFilepointerPositions(void);
 
 	/*inline bool exists(const std::string& name) {	struct stat buffer;
 													return (stat (name.c_str(), &buffer) == 0);
@@ -65,7 +65,7 @@ public:
 	//string getInputFileName(bool _printToScreen);
 
 	//void			readFile(void);
-	//unsigned long	find(unsigned long _startPosition, string _searchString);
+	unsigned long	find(unsigned long _startPosition, string _searchString);
 	//string			fread(unsigned long _startPosition, unsigned long _nbytes);
 
 };

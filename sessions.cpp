@@ -58,9 +58,9 @@ int main(int argc, char **argv)
 	while((c = getopt_long(argc, argv, shortOptions, longOptions, &optionIndex)) != -1){
 		switch(c){
 			case 'I':	{
-							cout << "searchTermsArrayIndex: " << searchTermsArrayIndex << endl;
+							//cout << "main: searchTermsArrayIndex: " << searchTermsArrayIndex << endl;
 							if(searchTermsArrayIndex >= MAXSEARCHTERMS){
-								cout << "MAXSEARCHTERMS reached!";
+								cout << "main: MAXSEARCHTERMS reached!";
 								break;
 							}
 
@@ -68,7 +68,7 @@ int main(int argc, char **argv)
 								searchTermsSet = true;
 
 							searchTermsArray[searchTermsArrayIndex] = optarg;
-							cout << "...search string added: " << searchTermsArray[searchTermsArrayIndex++] << endl;
+							//cout << "main: ...search string added: " << searchTermsArray[searchTermsArrayIndex++] << endl;
 							break;
 						}
 			case 'i':	{
@@ -79,11 +79,12 @@ int main(int argc, char **argv)
 							}
 							inputFileName = optarg;
 							inputFileNameSet = true;
-							cout << "Input file name set to " << inputFileName << endl;
+							cout << "Input file name set to: " << inputFileName << endl;
 
 							break;
 						}
 			case 'o':	{
+							// if outputfile exists, present the user with a choice
 							if(exists(optarg)){
 								cout << optarg << " exists! Overwrite? y/n: ";
 								char c;
@@ -91,9 +92,10 @@ int main(int argc, char **argv)
 								if(c == 'n')
 									exit(-1);
 							}
+
 							outputFileName = optarg;
 							outputFileNameSet = true;
-							cout << "Output file name set to " << outputFileName << endl;
+							cout << "Output file name set to: " << outputFileName << endl;
 							break;
 						}
 			case 'h':	{
@@ -101,7 +103,7 @@ int main(int argc, char **argv)
 							exit(1);
 						}
 			default:	{
-							cout << "Switch default\n" << endl;
+							cout << "main: Switch default\n" << endl;
 							break;
 						}
 		}	//end of getopt() switch statement
@@ -111,15 +113,15 @@ int main(int argc, char **argv)
 
 
 
-	//	If all the necessities are in place, we can continue to
+	//	If all necessities are in place, we can continue to
 	//	create an object-instance and initiate the search...
 	if(inputFileNameSet && outputFileNameSet && searchTermsSet){
-		cout << "Creating an instance of class object..." << endl;
 		fileoperations fo(inputFileName, outputFileName, searchTermsArray);
 	}
 
 	else{
-		cout << "Missing parameters..." << endl;
+		cout << "Missing parameters... Quitting!" << endl;
+		// TODO: provide some useful information
 	}
 
 

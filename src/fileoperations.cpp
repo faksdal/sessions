@@ -25,7 +25,7 @@ fileoperations::fileoperations(string _inputFileName, string _outputFileName, st
 	inputFile.open(inputFileName, ios::ate);
 	//	if file is not open, flag an error and exit
 	if(!inputFile.is_open()){
-		cout << "Error opening input file: " << inputFileName << ". Exiting..." << endl;
+		cout << "fileoperations constructor: Error opening input file: " << inputFileName << ". Exiting..." << endl;
 		exit(-1);
 	}
 	else{
@@ -35,20 +35,22 @@ fileoperations::fileoperations(string _inputFileName, string _outputFileName, st
 		inputFile.seekg(0, ios::beg);
 	}
 
+	/*
 	// if outputfile exists, present the user with a choice
 	if(exists(outputFileName)){
-		cout << outputFileName << " exists! Really want to overwrite? y/n: ";
+		cout << "WARNING: " << outputFileName << " exists! Really want to overwrite? y/n: ";
 		char c;
 		cin >> c;
 		if(c == 'n')
 			exit(-1);
 	}
+	*/
 
 	// open the output file
 	outputFile.open(outputFileName);
 	//	if file is not open, flag an error and exit
 	if(!outputFile.is_open()){
-		cout << "Error opening output file: " << outputFileName << ". Exiting..." << endl;
+		cout << "fileoperations constructor: Error opening output file: " << outputFileName << ". Exiting..." << endl;
 		exit(-1);
 	}
 
@@ -57,7 +59,8 @@ fileoperations::fileoperations(string _inputFileName, string _outputFileName, st
 
 
 	for(int i = 0; i < MAXSEARCHTERMS; i++){
-		cout << "Search term " << i+1 << ": " << _searchTermsArray[i] << endl;
+		if(_searchTermsArray[i].length() > 0)
+			cout << "Search term " << i+1 << ": " << _searchTermsArray[i] << endl;
 	}
 }
 
