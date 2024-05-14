@@ -22,7 +22,7 @@
 //	find() also updates the file pointer positions
 unsigned long fileoperations::find(unsigned long _startPosition, string _searchString)
 {
-	string			inputString;
+	string			inputString, s;
 	unsigned long	filePosition	= 0L;		// This starts with a 0
 	unsigned long	position		= 0L;
 	unsigned long	stringPosition	= 0L;		// This starts with a 0
@@ -53,11 +53,12 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 		position = filePosition - inputString.length() - 1;
 
 
-		/*
-		cout << "filePosition: " << filePosition << endl;
-		cout << "inputFileSize: " << inputFileSize << endl;
+		cout << "  filePosition: " << filePosition << endl;
+		cout << " inputFileSize: " << inputFileSize << endl;
 		cout << "Line from file: " << inputString << endl;
-		*/
+		cout << " _searchString: " << _searchString << endl;
+		cin >> s;
+
 
 		if((stringPosition = inputString.find(_searchString)) != string::npos){
 			cout << "Something!";
