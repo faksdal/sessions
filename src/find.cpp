@@ -28,51 +28,58 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 	unsigned long	stringPosition	= 0L;		// This starts with a 0
 
 
+	// if inputfile is not open, we exit with an error
 	if(!inputFile.is_open()){
 		cout << "Error: inputfile not open, exiting with exit(-1)!" << endl;
 		exit(-1);
 	}
 
+
+
 	// search to _startPosition from the beginning of the file
 	inputFile.seekg(_startPosition, ios::beg);
 
+	/*
+	cout << "_startPosition: " << _startPosition << endl;
+	string s;
+	cin >> s;
+	*/
+
+
 	//	As long as we have input from the file, we keep reading line by line
 	while(getline(inputFile, inputString)){
-		// break out of the while-loop if eof
-		if(inputFile.eof())
-			break;
 
-		// Reset file pointer and break out of while-loop if we've read past eof
-		if((filePosition = inputFile.tellg()) >= inputFileSize){
-			//	we've reached end-of-file and should act accordingly
-			//eof = true;
-			//	Update current file pointers
-			updateFilepointerPositions();
-
-			//	Reset file pointer to beginning of file
-			inputFile.seekg(0, ios::beg);
-			filePosition = inputFile.tellg();
-			//updateFilepointerPositions();
-			break;
-		}
-
-		//	Delete any initial whitespace in the string
-		inputString = skipInitialWhitespace(inputString);
+		filePosition = inputFile.tellg();
+		position = filePosition - inputString.length() - 1;
 
 
-		//	If this is true, we've got a match between _searchString and a
-		//	substring in the line stored in inputString, which we've just
-		//	from file.
-		//	Then break out of the while-loop
+		/*
+		cout << "filePosition: " << filePosition << endl;
+		cout << "inputFileSize: " << inputFileSize << endl;
+		cout << "Line from file: " << inputString << endl;
+		*/
+
+
+		updateFilepointerPositions();
+
+
+		/*
+		// Then we do a string comparison to see if we have a match.
+		// find() returns the position of the first character of the first match.
+		// If no matches were found, the function returns string::npos.
 		if((stringPosition = inputString.find(_searchString)) != string::npos){
-			//	Calculate file position for the start of the _searchString...
+			//	If we have a match, calculate file position for the
+			// start of the _searchString variable, and break out of the while-loop
 			position = filePosition - inputString.length() - 1;
 			break;
-		}
-		//	Update current file pointers
-		//updateFilepointerPositions();
+		} // if((stringPosition = inputString.find(_searchString)) != string::npos)
+		*/
 
-	}
-	//	Return current input file pointer position
+
+	} // while(getline(inputFile, inputString))
+
+
+
+	//	Return current input file pointer position to the caller
 	return(position);
 }

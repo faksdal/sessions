@@ -69,6 +69,7 @@ int main(int argc, char **argv)
 
 							searchTermsArray[searchTermsArrayIndex] = optarg;
 							//cout << "main: ...search string added: " << searchTermsArray[searchTermsArrayIndex++] << endl;
+							searchTermsArrayIndex++;
 							break;
 						}
 			case 'i':	{
@@ -116,7 +117,28 @@ int main(int argc, char **argv)
 	//	If all necessities are in place, we can continue to
 	//	create an object-instance and initiate the search...
 	if(inputFileNameSet && outputFileNameSet && searchTermsSet){
+		/*
 		fileoperations fo(inputFileName, outputFileName, searchTermsArray);
+		*/
+
+		/****************************************************************/
+		cout << "Number of included search terms: " << searchTermsArrayIndex << endl;
+
+		fileoperations fo(inputFileName, outputFileName, searchTermsArray);
+
+		unsigned long	startPosition = 0L;
+		for(short i = 0; i < searchTermsArrayIndex; i++){
+			while(!fo.eof){
+				cout << "Inside while(!fo.eof)-loop. " << endl;
+
+				startPosition = fo.find(startPosition, searchTermsArray[searchTermsArrayIndex]);
+				cout << "main(): startPosition: " << startPosition << endl;
+				//fo.eof = true;
+
+			}
+		}
+		/****************************************************************/
+
 	}
 
 	else{

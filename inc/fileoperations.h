@@ -58,11 +58,11 @@ public:
 	virtual ~fileoperations();
 
 	//inline unsigned long	getInputFileSize(void)			{ return inputFileSize;			}
-	//inline unsigned long	getCurrentInputFilePos(void)	{ return currentInputFilePos;	}
+	inline unsigned long	getCurrentInputFilePos(void)	{ return currentInputFilePos;	}
 	//inline unsigned long	getCurrentOutputFilePos(void)	{ return currentOutputFilePos;	}
 
-	//string getOutputFileName(bool _printToScreen);
-	//string getInputFileName(bool _printToScreen);
+	string getOutputFileName(bool _printToScreen);
+	string getInputFileName(bool _printToScreen);
 
 	//void			readFile(void);
 	unsigned long	find(unsigned long _startPosition, string _searchString);

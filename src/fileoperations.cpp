@@ -55,7 +55,7 @@ fileoperations::fileoperations(string _inputFileName, string _outputFileName, st
 	}
 
 	//	update current file pointer positions
-	//updateFilepointerPositions();
+	updateFilepointerPositions();
 
 
 	for(int i = 0; i < MAXSEARCHTERMS; i++){

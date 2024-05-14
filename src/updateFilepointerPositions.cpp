@@ -21,11 +21,16 @@ void fileoperations::updateFilepointerPositions(void)
 	currentInputFilePos		= inputFile.tellg();
 	currentOutputFilePos	= outputFile.tellp();
 
-	if(currentInputFilePos >= inputFileSize)
+	cout << "currentInputFilePos: " << currentInputFilePos << ", inputFileSize:" << inputFileSize << endl;
+	if(currentInputFilePos >= inputFileSize){
 		eof = true;
-	else
+		cout << "updateFilepointerPositions(): eof = true" << endl;
+	}
+	else{
 		eof = false;
+		cout << "updateFilepointerPositions(): eof = false" << endl;
+	}
 
-	//cout << " updateFilepointerPositions(): File pointer input: " << getCurrentInputFilePos() << endl;
+	cout << " updateFilepointerPositions(): File pointer input: " << getCurrentInputFilePos() << endl;
 	//cout << "updateFilepointerPositions(): File pointer output: " << getCurrentOutputFilePos() << endl;
 }
