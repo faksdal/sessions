@@ -32,7 +32,7 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 
 	// If inputfile is not open, we exit with an error
 	if(!inputFile.is_open()){
-		cout << "Error: inputfile not open, exiting with exit(-1)!" << endl;
+		cout << "fileoperations::find(): Error: inputfile not open, exiting with exit(-1)!" << endl;
 		exit(-1);
 	}
 
@@ -40,6 +40,7 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 
 	// search to _startPosition from the beginning of the file
 	inputFile.seekg(_startPosition, ios::beg);
+	cout << "fileoperations::find(): input file position: " << inputFile.tellg() << endl;
 
 
 	searchString = _searchString;
@@ -60,7 +61,7 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 		// If there's a match, we break out of the while-loop,
 		// and return to caller with the position in the file where the string starts.
 		if((stringPosition = inputString.find(searchString)) != string::npos){
-			cout << "find(): Search match found: " << searchString << ", at position: " << position << endl;
+			cout << "fileoperations::find(): Search match found: " << searchString << ", at position: " << position << endl;
 			break;
 		}
 

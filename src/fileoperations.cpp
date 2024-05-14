@@ -25,11 +25,12 @@ fileoperations::fileoperations(string _inputFileName, string _outputFileName, st
 	inputFile.open(inputFileName, ios::ate);
 	//	if file is not open, flag an error and exit
 	if(!inputFile.is_open()){
-		cout << "fileoperations constructor: Error opening input file: " << inputFileName << ". Exiting..." << endl;
+		cout << "fileoperations(): Error opening input file: " << inputFileName << ". Exiting..." << endl;
 		exit(-1);
 	}
 	else{
 		// get filesize and store it in object variable
+		cout << "fileoperations(): inputFile.tellg(): " << inputFile.tellg() << endl;
 		inputFileSize = inputFile.tellg();
 		// After getting the filesize, set file pointer at beginning of file
 		inputFile.seekg(0, ios::beg);

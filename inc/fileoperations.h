@@ -59,13 +59,17 @@ public:
 
 	//inline unsigned long	getInputFileSize(void)			{ return inputFileSize;			}
 	inline unsigned long	getCurrentInputFilePos(void)	{ return currentInputFilePos;	}
+	//inline unsigned long	resetInputFilePos(void)			{ inputFile.seekg(0, ios::beg);	return(inputFile.tellg()); }
 	//inline unsigned long	getCurrentOutputFilePos(void)	{ return currentOutputFilePos;	}
 
 	string getOutputFileName(bool _printToScreen);
 	string getInputFileName(bool _printToScreen);
 
 	//void			readFile(void);
+
 	unsigned long	find(unsigned long _startPosition, string _searchString);
+	unsigned long	resetInputFilePos(void);
+
 	//string			fread(unsigned long _startPosition, unsigned long _nbytes);
 
 };

@@ -112,7 +112,7 @@ int main(int argc, char **argv)
 
 
 
-
+	string s;
 
 	//	If all necessities are in place, we can continue to
 	//	create an object-instance and initiate the search...
@@ -128,20 +128,35 @@ int main(int argc, char **argv)
 
 		unsigned long	startPosition = 0L;
 		for(short i = 0; i < searchTermsArrayIndex; i++){
+			cout << "main(): First search term index: " << i << endl;
+			cout << "main(): Search string:  " << searchTermsArray[i] << endl;
+
+			/*
+			if(fo.eof)
+				cout << "main(): fo.eof == true" << endl;
+			else
+				cout << "main(): fo.eof == false" << endl;
+			*/
+
 			while(!fo.eof){
 
 				//cout << "main(): Inside while(!fo.eof)-loop. " << endl;
 				//cout << "main(): searchTermsArrayIndex:  " << i << endl;
-				//cout << "main(): Search string:  " << searchTermsArray[i] << endl;
+				cout << "main(): Starting new search for:  " << searchTermsArray[i] << endl;
+				//		cin >> s;
 
 				startPosition = (fo.find(startPosition, searchTermsArray[i])) + searchTermsArray[i].length();
-				cout << "Position: " << startPosition << endl;
+				cout << "main(): Position: " << startPosition << endl;
 
 				//cout << "main(): startPosition: " << startPosition << endl;
 				//fo.eof = true;
 
 			}
 			// Reset startPosition after we are done with a search term
+			cout << "main(): Input file pointer pos: " << fo.resetInputFilePos() << endl;
+			cout << "main(): One search term done, move on to the next..." << endl;
+			//cin >> s;
+
 			startPosition = 0L;
 		}
 		/****************************************************************/
