@@ -130,6 +130,7 @@ int main(int argc, char **argv)
 		for(short i = 0; i < searchTermsArrayIndex; i++){
 			while(!fo.eof){
 				cout << "Inside while(!fo.eof)-loop. " << endl;
+				cout << "Search string:  " << searchTermsArray[searchTermsArrayIndex] << endl;
 
 				startPosition = fo.find(startPosition, searchTermsArray[searchTermsArrayIndex]);
 				cout << "main(): startPosition: " << startPosition << endl;

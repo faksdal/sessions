@@ -61,7 +61,7 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 
 
 		if((stringPosition = inputString.find(_searchString)) != string::npos){
-			cout << "Something!";
+			cout << "Something!" << endl;
 		}
 
 
