@@ -59,6 +59,10 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 		cout << "Line from file: " << inputString << endl;
 		*/
 
+		if((stringPosition = inputString.find(_searchString)) != string::npos){
+			cout << "Something!";
+		}
+
 
 		updateFilepointerPositions();
 
@@ -74,6 +78,7 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 			break;
 		} // if((stringPosition = inputString.find(_searchString)) != string::npos)
 		*/
+
 
 
 	} // while(getline(inputFile, inputString))
