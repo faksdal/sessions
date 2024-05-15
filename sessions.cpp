@@ -60,7 +60,7 @@ int main(int argc, char **argv)
 			case 'I':	{
 							//cout << "main: searchTermsArrayIndex: " << searchTermsArrayIndex << endl;
 							if(searchTermsArrayIndex >= MAXSEARCHTERMS){
-								cout << "main: MAXSEARCHTERMS reached!";
+								cout << "main(): MAXSEARCHTERMS reached!";
 								break;
 							}
 
@@ -74,20 +74,20 @@ int main(int argc, char **argv)
 						}
 			case 'i':	{
 							if(!exists(optarg)){
-								cout << "Input file " << optarg << " does not exist!" << endl;
-								cout << "Exiting..." << endl;
+								cout << "main(): Input file " << optarg << " does not exist!" << endl;
+								cout << "main(): Exiting..." << endl;
 								break;
 							}
 							inputFileName = optarg;
 							inputFileNameSet = true;
-							cout << "Input file name set to: " << inputFileName << endl;
+							cout << "main(): Input file name set to: " << inputFileName << endl;
 
 							break;
 						}
 			case 'o':	{
 							// if outputfile exists, present the user with a choice
 							if(exists(optarg)){
-								cout << optarg << " exists! Overwrite? y/n: ";
+								cout << "main(): " << optarg << " exists! Overwrite? y/n: ";
 								char c;
 								cin >> c;
 								if(c == 'n')
@@ -96,11 +96,11 @@ int main(int argc, char **argv)
 
 							outputFileName = optarg;
 							outputFileNameSet = true;
-							cout << "Output file name set to: " << outputFileName << endl;
+							cout << "main(): Output file name set to: " << outputFileName << endl;
 							break;
 						}
 			case 'h':	{
-							cout << "Provide some useful help to the user!" << endl;
+							cout << "main(): Provide some useful help to the user!" << endl;
 							exit(1);
 						}
 			default:	{
@@ -122,21 +122,27 @@ int main(int argc, char **argv)
 		*/
 
 		/****************************************************************/
-		cout << "Number of included search terms: " << searchTermsArrayIndex << endl;
+		cout << "main(): Number of included search terms: " << searchTermsArrayIndex << endl;
 
 		fileoperations fo(inputFileName, outputFileName, searchTermsArray);
 
 		unsigned long	startPosition = 0L;
 		for(short i = 0; i < searchTermsArrayIndex; i++){
 			while(!fo.eof){
-				cout << "Inside while(!fo.eof)-loop. " << endl;
-				cout << "Search string:  " << searchTermsArray[searchTermsArrayIndex] << endl;
 
-				startPosition = fo.find(startPosition, searchTermsArray[searchTermsArrayIndex]);
-				cout << "main(): startPosition: " << startPosition << endl;
+				//cout << "main(): Inside while(!fo.eof)-loop. " << endl;
+				//cout << "main(): searchTermsArrayIndex:  " << i << endl;
+				//cout << "main(): Search string:  " << searchTermsArray[i] << endl;
+
+				startPosition = (fo.find(startPosition, searchTermsArray[i])) + searchTermsArray[i].length();
+				cout << "Position: " << startPosition << endl;
+
+				//cout << "main(): startPosition: " << startPosition << endl;
 				//fo.eof = true;
 
 			}
+			// Reset startPosition after we are done with a search term
+			startPosition = 0L;
 		}
 		/****************************************************************/
 
