@@ -1,3 +1,8 @@
+*** updates:
+	2024-05-15	created new branch searchTerms, to develop and deal with searching
+				through the input file and handle the searches
+
+
 Goals for the sessions-project:
 	- 	read a html file and extract information about sessions
 	- 	find sessions based on a search for observatory name (e.g. "Nn")
