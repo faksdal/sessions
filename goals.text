@@ -13,4 +13,13 @@ To accomplish this, I need to be able to:
 	-	print the result to an output file or screen
 
 
+What have we got so far:
+	-	open an input file
+	-	check for input file existence, returning an error
+	-	find specific search string(s) in the input file, taking care
+		not to read beyond eof
+	-	open an output file
+	-	check for output file existence, presenting the user with a question
+		if the file exists
+	
 
