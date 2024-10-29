@@ -13,8 +13,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 // The main part of the program, run() runs until the user exits the program.
-// It is responsible for calling readfile(), which reads the content of the
-// input file and stores it in memory.
 //
 ////////////////////////////////////////////////////////////////////////////////
 void ivsSessions::run(void)
@@ -25,4 +23,3 @@ void ivsSessions::run(void)
 	printHeaders();
 	printSessionList(0);
 }
-
