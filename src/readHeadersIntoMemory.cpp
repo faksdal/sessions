@@ -4,6 +4,7 @@
  *  Created on: 27 Oct 2024
  *      Author: jole
  */
+/*
 // disable warning for unused value
 #pragma GCC diagnostic ignored "-Wunused-value" *_ptr
 
@@ -73,3 +74,4 @@ int ivsSessions::readHeadersIntoMemory(const char* _ptr)
 
 	return(ptrAdvance);
 }
+*/

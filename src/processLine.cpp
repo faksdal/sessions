@@ -4,7 +4,7 @@
  *  Created on: 27 Oct 2024
  *      Author: jole
  */
-
+/*
 #include <iostream>
 
 
@@ -18,11 +18,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 bool ivsSessions::processLine(unsigned long &_startX, unsigned long _length)
 {
-	/*
-	if(fo_inputBuffer[_startX] != '-'){
-		while(buffer[endIndex] != '|')
-			endIndex++;
-	*/
+	/
 
 	advanceBuffer(_startX, _length);
 	_sessionType.append(fo_inputBuffer, _startX, _length);
@@ -74,4 +70,4 @@ bool ivsSessions::processLine(unsigned long &_startX, unsigned long _length)
 
 	return(true);
 }
-
+*/

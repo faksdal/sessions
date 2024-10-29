@@ -123,15 +123,16 @@ class ivsSessions{
 	//
 	// Private functions related to input processing
 	//
-	int		readHeadersIntoMemory(const char* _ptr);
+	//int		readHeadersIntoMemory(const char* _ptr);
 	//
-	bool	processLine(unsigned long &_startX, unsigned long _length);
+	//bool	processLine(unsigned long &_startX, unsigned long _length);
 	bool	setIntensiveFlag(void);
 	//
 	void	clearAllBuffers(void);
-	void	advanceBuffer(unsigned long &_start, unsigned long &_len);
+	//void	advanceBuffer(unsigned long &_start, unsigned long &_len);
 	void	parser(void);
-	void	processInput(void);
+	//void	processInput(void);
+	void	addListItem(void);
 	////////////////////////////////////////////////////////////////////////////
 
 

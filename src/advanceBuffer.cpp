@@ -4,7 +4,7 @@
  *  Created on: 27 Oct 2024
  *      Author: jole
  */
-
+/*
 #include "vlbi-sessions.h"
 
 
@@ -23,3 +23,4 @@ void ivsSessions::advanceBuffer(unsigned long &_start, unsigned long &_len)
 		_len++;
 	}
 }
+*/

@@ -33,6 +33,7 @@ void ivsSessions::printSessionList(unsigned long _startItem)
 					<< sessionList[i].status
 					<< sessionList[i].dbcCode
 					<< sessionList[i].subm
-					<< sessionList[i].del << std::endl;
+					<< sessionList[i].del
+					<< std::flush << std::endl;
 	}
 }
