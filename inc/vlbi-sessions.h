@@ -4,9 +4,9 @@
  *  Created on: Aug 29, 2024
  *      Author: leijon
  */
-
-#ifndef INC_IVSSESSIONS_H_
-#define INC_IVSSESSIONS_H_
+#pragma once
+//#ifndef INC_IVSSESSIONS_H_
+//#define INC_IVSSESSIONS_H_
 
 
 #include <vector>
@@ -61,10 +61,10 @@ class ivsSessions{
 	std::string		buffer;
 	//
 	// Header text
-	std::string		header1, header2;
+	std::string		header1, header2, fileFormat;
 	//
 	// Keeps track of where we're at in the input buffer
-	int	fo_inputBufferIndex;
+	unsigned long	fo_inputBufferIndex;
 	//
 	////////////////////////////////////////////////////////////////////////////
 
@@ -74,7 +74,8 @@ class ivsSessions{
 	// Sessionlist variables
 	//
 	// Working buffers, serves as intermediate placeholders for data, used to
-	// add elements to the list. Represents corresponding data fields in the list
+	// add elements to the list. Represents corresponding data fields in the
+	// list definition.
 	std::string		_sessionType;
 	std::string		_date;
 	std::string		_sessionCode;
@@ -90,8 +91,6 @@ class ivsSessions{
 	std::string		_dbcCode;
 	std::string		_subm;
 	std::string		_del;
-	//
-	// Represents corresponding data fields in the list
 	bool			_visible;
 	bool			_highlighted;
 	//
@@ -100,10 +99,9 @@ class ivsSessions{
 	////////////////////////////////////////////////////////////////////////////
 
 
-
 	////////////////////////////////////////////////////////////////////////////
 	//
-	// Fileops variables
+	// File operation variables
 	//
 	std::string		fo_inputFileName;
 	std::string		fo_inputBuffer;
@@ -121,16 +119,17 @@ class ivsSessions{
 	////////////////////////////////////////////////////////////////////////////
 
 
-
 	////////////////////////////////////////////////////////////////////////////
 	//
 	// Private functions related to input processing
 	//
 	int		readHeadersIntoMemory(const char* _ptr);
+	//
+	bool	processLine(unsigned long &_startX, unsigned long _length);
 	bool	setIntensiveFlag(void);
+	//
 	void	clearAllBuffers(void);
 	void	advanceBuffer(unsigned long &_start, unsigned long &_len);
-	bool	processLine(unsigned long &_startX, unsigned long _length);
 	void	parser(void);
 	void	processInput(void);
 	////////////////////////////////////////////////////////////////////////////
@@ -264,4 +263,4 @@ public:
 	void	run(void);
 };
 */
-#endif /* INC_IVSSESSIONS_H_ */
+//#endif /* INC_IVSSESSIONS_H_ */

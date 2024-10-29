@@ -4,9 +4,9 @@
  *  Created on: May 21, 2024
  *      Author: leijon
  */
-
-#ifndef INC_FILEEXISTS_H_
-#define INC_FILEEXISTS_H_
+#pragma once
+//#ifndef INC_FILEEXISTS_H_
+//#define INC_FILEEXISTS_H_
 
 #include <string>
 
@@ -22,4 +22,4 @@ bool fileexists(const std::string& name)
 }
 
 
-#endif /* INC_FILEEXISTS_H_ */
+//#endif /* INC_FILEEXISTS_H_ */
