@@ -21,6 +21,7 @@ void ivsSessions::run(void)
 {
 	readfile();
 	parser();
+
 	printHeaders();
 	printSessionList(0);
 }

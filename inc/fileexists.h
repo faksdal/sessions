@@ -5,8 +5,6 @@
  *      Author: leijon
  */
 #pragma once
-//#ifndef INC_FILEEXISTS_H_
-//#define INC_FILEEXISTS_H_
 
 #include <string>
 
@@ -20,6 +18,3 @@ bool fileexists(const std::string& name)
 	struct stat buffer;
 	return(stat(name.c_str(), &buffer) == 0);
 }
-
-
-//#endif /* INC_FILEEXISTS_H_ */
