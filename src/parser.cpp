@@ -13,7 +13,10 @@
 
 #include "vlbi-sessions.h"
 
-
+enum class State{	START,
+					IN_SECTION,
+					IN_KEY_VALUE,
+					END };
 
 
 ////////////////////////////////////////////////////////////////////////////////
