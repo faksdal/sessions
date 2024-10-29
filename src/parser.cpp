@@ -13,10 +13,10 @@
 
 #include "vlbi-sessions.h"
 
-enum class State{	START,
-					IN_SECTION,
-					IN_KEY_VALUE,
-					END
+enum class State{	FILE_FORMAT,
+					HEADING,
+					HORIZONTAL_DIVIDER,
+					SESSION_START
 };
 
 
