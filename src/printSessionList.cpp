@@ -25,7 +25,8 @@ void ivsSessions::printSessionList(unsigned long _startItem)
 					<< sessionList[i].doy
 					<< sessionList[i].time
 					<< sessionList[i].dur
-					<< sessionList[i].includedStations
+					<< sessionList[i].stations
+					/*<< sessionList[i].includedStations*/
 					/*<< sessionList[i].excludedStations*/
 					<< sessionList[i].sked
 					<< sessionList[i].corr

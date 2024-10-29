@@ -43,7 +43,10 @@ bool ivsSessions::processLine(unsigned long &_startX, unsigned long _length)
 	_dur.append(fo_inputBuffer, _startX, _length);
 
 	advanceBuffer(_startX, _length);
-	_includedStations.append(fo_inputBuffer, _startX, _length);
+	_stations.append(fo_inputBuffer, _startX, _length);
+
+	//advanceBuffer(_startX, _length);
+	//_includedStations.append(fo_inputBuffer, _startX, _length);
 
 	//advanceBuffer(_startX, _length);
 	//_excludedStations.append(fo_inputBuffer, _startX, _length);

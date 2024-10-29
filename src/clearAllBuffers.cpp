@@ -22,8 +22,9 @@ void ivsSessions::clearAllBuffers(void)
 	_doy.clear();
 	_time.clear();
 	_dur.clear();
-	_includedStations.clear();
-	_excludedStations.clear();
+	_stations.clear();
+	//_includedStations.clear();
+	//_excludedStations.clear();
 	_sked.clear();
 	_corr.clear();
 	_status.clear();

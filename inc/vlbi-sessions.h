@@ -28,8 +28,9 @@ public:
 	std::string		doy;
 	std::string		time;
 	std::string		dur;
-	std::string		includedStations;
-	std::string		excludedStations;
+	std::string		stations;
+	//std::string		includedStations;
+	//std::string		excludedStations;
 	std::string		sked;
 	std::string		corr;
 	std::string		status;
@@ -80,8 +81,9 @@ class ivsSessions{
 	std::string		_doy;
 	std::string		_time;
 	std::string		_dur;
-	std::string		_includedStations;
-	std::string		_excludedStations;
+	std::string		_stations;
+	//std::string		_includedStations;
+	//std::string		_excludedStations;
 	std::string		_sked;
 	std::string		_corr;
 	std::string		_status;
