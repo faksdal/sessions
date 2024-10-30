@@ -17,10 +17,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 void ivsSessions::run(void)
 {
+	////////////////////////////////////////////////////////////////////////////
+	// Read from inputfile and parse the content.
+	// The parser populates the sessionList, making it available
+	// for us to use.
 	readfile();
 	parser();
+	////////////////////////////////////////////////////////////////////////////
 
-	terminalSize();
+	terminalSize();	// should be moved into a function responsible for setting up the display
 
 	printHeaders();
 	printSessionList(3);

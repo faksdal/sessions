@@ -18,7 +18,7 @@ void ivsSessions::terminalSize(void)
 {
 	struct	winsize	ws;
 
-	// Use ioctl to get the window size
+	// Use ioctl() to get the window size
 	if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == -1) {
 		std::cerr << "Error: Unable to get terminal size" << std::endl;
 		return;
