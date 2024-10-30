@@ -23,7 +23,9 @@
 #include "vlbi-sessions.h"
 
 
-
+////////////////////////////////////////////////////////////////////////////////
+// The constructor - you know the drill...
+////////////////////////////////////////////////////////////////////////////////
 ivsSessions::ivsSessions(std::string _inputFileName)
 {
 	fo_inputFileName	= _inputFileName;
@@ -43,10 +45,18 @@ ivsSessions::ivsSessions(std::string _inputFileName)
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+// The destructor
+////////////////////////////////////////////////////////////////////////////////
 ivsSessions::~ivsSessions()
 {
+	// Restore terminal to previous state
 	disableRawMode();
+
+	// Restore display
 	system("tput rmcup");
+
+	// Print a nice thank-you-message to the user :-)
 	std::cout << "\r\nThank you for using sessions!\n\r";
 }
 
