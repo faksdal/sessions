@@ -13,7 +13,15 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+// What do I want form this function?
+//		- I want it to print the session list to the visible screen, starting
+// 			from _startItem.
+//		- I only want printed those items that are set to .visible.
+//		- I want the top-most item displayed to be highlighted, initially. Later
+//			I want to be able to use the keyboard to select other items in the
+//			list to be highlighted.
 //
+// What do I need to make this happen?
 //
 ////////////////////////////////////////////////////////////////////////////////
 void ivsSessions::printSessionList(unsigned long _startItem)
@@ -39,8 +47,6 @@ void ivsSessions::printSessionList(unsigned long _startItem)
 						<< sessionList[i].time
 						<< sessionList[i].dur
 						<< sessionList[i].stations
-						/*<< sessionList[i].includedStations*/
-						/*<< sessionList[i].excludedStations*/
 						<< sessionList[i].sked
 						<< sessionList[i].corr
 						<< sessionList[i].status
