@@ -37,7 +37,28 @@ public:
 };
 ////////////////////////////////////////////////////////////////////////////////
 
-
+enum class State{	READY,
+					NEW_LINE,
+					FILE_FORMAT,
+					HEADER,
+					SESSION_TYPE,
+					DATE,
+					SESSION_CODE,
+					DOY,
+					TIME,
+					DUR,
+					STATIONS,
+					SKED,
+					CORR,
+					STATUS,
+					DBC_CODE,
+					SUBM,
+					DEL,
+					HORIZONTAL_DIVIDER,
+					FOOTER,
+					CHECK_NEW_LINE,
+					ADD_LIST_ITEM
+};
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -60,6 +81,9 @@ class ivsSessions{
 	//
 	// Keeps track of where we're at in the input buffer
 	unsigned long	fo_inputBufferIndex;
+	//
+	State		state;
+	const char*	ptr;
 	//
 	////////////////////////////////////////////////////////////////////////////
 
