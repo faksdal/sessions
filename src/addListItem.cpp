@@ -20,7 +20,7 @@ void ivsSessions::addListItem(void)
 	//
 	// Add the current line to the list
 	//
-	sessionList.push_back({	_sessionType,
+	sessionList.push_back({	_sessionType, // @suppress("Invalid arguments")
 							_date,
 							_sessionCode,
 							_doy,
