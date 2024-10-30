@@ -23,6 +23,7 @@ void ivsSessions::run(void)
 {
 	//bool	quit = false;
 
+	// Save the current terminal screen, so we can restore upon exit
 	system("tput smcup");
 
 	////////////////////////////////////////////////////////////////////////////
