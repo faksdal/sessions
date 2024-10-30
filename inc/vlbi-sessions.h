@@ -37,6 +37,13 @@ public:
 };
 ////////////////////////////////////////////////////////////////////////////////
 
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Different states used by the parser.
+// I'm using a state machine to parse the input file, and these enums reflects
+// the different states it can have.
+//
 enum class State{	READY,
 					NEW_LINE,
 					FILE_FORMAT,
@@ -59,6 +66,8 @@ enum class State{	READY,
 					CHECK_NEW_LINE,
 					ADD_LIST_ITEM
 };
+////////////////////////////////////////////////////////////////////////////////
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -72,19 +81,26 @@ class ivsSessions{
 	// True if session is intensive, false otherwise. We need to know if the
 	// session is intensive, because the file layout differs between the two.
 	bool	intensiveFlag;
-	//
+
 	// Intermediate working buffer
 	std::string		buffer;
-	//
+
 	// Header text
-	std::string		header1, header2, fileFormat;
-	//
+	std::string		header1, header2;
+
+	// Holds the string from the inputfile containing information
+	// about the master file format version number
+	std::string		fileFormat;
+
 	// Keeps track of where we're at in the input buffer
 	unsigned long	fo_inputBufferIndex;
-	//
+
+	// Holds the current state of the parser
 	State		state;
+
+	// Pointer to the input buffer as read from file. The parser uses pointer
+	// arithmetic to do its job
 	const char*	ptr;
-	//
 	////////////////////////////////////////////////////////////////////////////
 
 
@@ -138,6 +154,14 @@ class ivsSessions{
 
 	////////////////////////////////////////////////////////////////////////////
 	//
+	// Variables related to terminal output
+	int	rows, columns;
+	//
+	////////////////////////////////////////////////////////////////////////////
+
+
+	////////////////////////////////////////////////////////////////////////////
+	//
 	// Private functions related to input processing
 	//
 	//
@@ -154,6 +178,7 @@ class ivsSessions{
 	//
 	// Private functions related to screen output
 	//
+	void	terminalSize(void);
 	void	printHeaders(void);
 	void	printSessionList(unsigned long _startItem);
 	////////////////////////////////////////////////////////////////////////////
@@ -168,12 +193,14 @@ public:
 	virtual ~ivsSessions();
 	////////////////////////////////////////////////////////////////////////////
 
+
 	////////////////////////////////////////////////////////////////////////////
 	//
 	// Public function to run the class object
 	//
 	void run(void);
 	////////////////////////////////////////////////////////////////////////////
+
 
 	////////////////////////////////////////////////////////////////////////////
 	//

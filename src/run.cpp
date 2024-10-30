@@ -20,6 +20,8 @@ void ivsSessions::run(void)
 	readfile();
 	parser();
 
+	terminalSize();
+
 	printHeaders();
-	printSessionList(0);
+	printSessionList(3);
 }

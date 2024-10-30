@@ -18,22 +18,43 @@
 ////////////////////////////////////////////////////////////////////////////////
 void ivsSessions::printSessionList(unsigned long _startItem)
 {
+	for(unsigned long i = 0; i < sessionList.size(); i++){
+		sessionList[i].highlighted = false;
+	}
+
+	sessionList[_startItem].highlighted = true;
+
 	for(unsigned long i = _startItem; i < sessionList.size(); i++){
-		std::cout	<< sessionList[i].sessionType
-					<< sessionList[i].date
-					<< sessionList[i].sessionCode
-					<< sessionList[i].doy
-					<< sessionList[i].time
-					<< sessionList[i].dur
-					<< sessionList[i].stations
-					/*<< sessionList[i].includedStations*/
-					/*<< sessionList[i].excludedStations*/
-					<< sessionList[i].sked
-					<< sessionList[i].corr
-					<< sessionList[i].status
-					<< sessionList[i].dbcCode
-					<< sessionList[i].subm
-					<< sessionList[i].del
-					<< std::flush << std::endl;
+		if(sessionList[i].visible){
+			if(sessionList[i].highlighted){
+				std::cout << '*';
+			}
+			else{
+				std::cout << ' ';
+			}
+			std::cout	<< sessionList[i].sessionType
+						<< sessionList[i].date
+						<< sessionList[i].sessionCode
+						<< sessionList[i].doy
+						<< sessionList[i].time
+						<< sessionList[i].dur
+						<< sessionList[i].stations
+						/*<< sessionList[i].includedStations*/
+						/*<< sessionList[i].excludedStations*/
+						<< sessionList[i].sked
+						<< sessionList[i].corr
+						<< sessionList[i].status
+						<< sessionList[i].dbcCode
+						<< sessionList[i].subm
+						<< sessionList[i].del;
+			if(sessionList[i].highlighted){
+				std::cout << '*';
+			}
+			else{
+				std::cout << ' ';
+			}
+
+			std::cout << std::flush << std::endl;
+		}
 	}
 }

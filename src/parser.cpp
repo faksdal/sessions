@@ -12,34 +12,14 @@
 #include <iostream>
 
 #include "vlbi-sessions.h"
-/*
-enum class State{	READY,
-					NEW_LINE,
-					FILE_FORMAT,
-					HEADER,
-					SESSION_TYPE,
-					DATE,
-					SESSION_CODE,
-					DOY,
-					TIME,
-					DUR,
-					STATIONS,
-					SKED,
-					CORR,
-					STATUS,
-					DBC_CODE,
-					SUBM,
-					DEL,
-					HORIZONTAL_DIVIDER,
-					FOOTER,
-					CHECK_NEW_LINE,
-					ADD_LIST_ITEM
-};
-*/
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Parsing the input buffer
+// Parsing the input buffer with the help of a state machine.
+// Learning and inspiration from:
+//		https://www.youtube.com/watch?v=rauO5qespFc&t=1077s
 //
 ////////////////////////////////////////////////////////////////////////////////
 void ivsSessions::parser(void)
