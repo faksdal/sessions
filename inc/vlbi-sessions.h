@@ -178,6 +178,7 @@ class ivsSessions{
 	//
 	// Private functions related to screen output
 	//
+	void	setupDisplay(void);
 	void	terminalSize(void);
 	void	printHeaders(void);
 	void	printSessionList(unsigned long _startItem);

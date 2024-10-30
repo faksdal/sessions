@@ -1,0 +1,20 @@
+/*
+ * setupDisplay.cpp
+ *
+ *  Created on: 30 Oct 2024
+ *      Author: jole
+ */
+
+#include "vlbi-sessions.h"
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+////////////////////////////////////////////////////////////////////////////////
+void ivsSessions::setupDisplay(void)
+{
+	terminalSize();	// loads terminal size into memory, rows and columns
+}

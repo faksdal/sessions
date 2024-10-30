@@ -25,7 +25,7 @@ void ivsSessions::run(void)
 	parser();
 	////////////////////////////////////////////////////////////////////////////
 
-	terminalSize();	// should be moved into a function responsible for setting up the display
+	setupDisplay();
 
 	printHeaders();
 	printSessionList(3);
