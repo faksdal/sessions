@@ -26,41 +26,33 @@
 ////////////////////////////////////////////////////////////////////////////////
 void ivsSessions::printSessionList(unsigned long _startItem)
 {
-	for(unsigned long i = 0; i < sessionList.size(); i++){
-		sessionList[i].highlighted = false;
-	}
+	int x, y;
 
-	sessionList[_startItem].highlighted = true;
+	x	= 1;
+	y	= listStartRow;
 
 	for(unsigned long i = _startItem; i < sessionList.size(); i++){
 		if(sessionList[i].visible){
-			if(sessionList[i].highlighted){
-				std::cout << '*';
-			}
-			else{
-				std::cout << ' ';
-			}
-			std::cout	<< sessionList[i].sessionType
-						<< sessionList[i].date
-						<< sessionList[i].sessionCode
-						<< sessionList[i].doy
-						<< sessionList[i].time
-						<< sessionList[i].dur
-						<< sessionList[i].stations
-						<< sessionList[i].sked
-						<< sessionList[i].corr
-						<< sessionList[i].status
-						<< sessionList[i].dbcCode
-						<< sessionList[i].subm
-						<< sessionList[i].del;
-			if(sessionList[i].highlighted){
-				std::cout << '*';
-			}
-			else{
-				std::cout << ' ';
-			}
+			sessionList[i].highlighted	? itemListColor = "\033[30;102m"
+										: itemListColor = "\033[40;00m";	// white text, default background
 
-			std::cout << std::flush << std::endl;
+			print(x, y,		itemListColor
+						+	sessionList[i].sessionType
+						+	sessionList[i].date
+						+	sessionList[i].sessionCode
+						+	sessionList[i].doy
+						+	sessionList[i].time
+						+	sessionList[i].dur
+						+	sessionList[i].stations
+						+	sessionList[i].sked
+						+	sessionList[i].corr
+						+	sessionList[i].status
+						+	sessionList[i].dbcCode
+						+	sessionList[i].subm
+						+	sessionList[i].del);
+			y++;
+			if(y >= listEndRow)
+				break;
 		}
 	}
 }

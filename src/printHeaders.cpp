@@ -18,7 +18,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 void ivsSessions::printHeaders(void)
 {
-	std::cout << header1 << std::endl;
-	std::cout << header2 << std::endl;
-
+	print(1, 1, header1);
+	print(1, 2, header2);
 }

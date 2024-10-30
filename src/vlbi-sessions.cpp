@@ -6,7 +6,7 @@
  */
 //#pragma GCC diagnostic ignored "-Wunused-value" *_ptr
 
-//#include <cstdlib>
+#include <cstdlib>  // For system()
 //#include <vector>
 //
 
@@ -27,18 +27,29 @@
 ivsSessions::ivsSessions(std::string _inputFileName)
 {
 	fo_inputFileName	= _inputFileName;
-
 	intensiveFlag		= false;
 	fo_inputBufferIndex	= 0;
+	rows				= 0;
+	columns				= 0;
+	ptr					= 0;
+	state				= State::READY;
+	listEndRow			= 0;
+	listStartRow		= 0;
+	_highlighted		= 0;
+	_visible			= 0;
+	header1Row			= 0;
+	header2Row			= 0;
 }
 
 
 
 ivsSessions::~ivsSessions()
 {
-	std::cout << "Thank you for using sessions!\n\r";
-	//disableRawMode();
+	disableRawMode();
+	system("tput rmcup");
+	std::cout << "\r\nThank you for using sessions!\n\r";
 }
+
 
 
 /*

@@ -151,13 +151,32 @@ class ivsSessions{
 	//unsigned long	fo_inputBufferIndex;
 	////////////////////////////////////////////////////////////////////////////
 
-
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// Variables related to terminal output
+////////////// T E R M I N A L  O U T P U T ////////////////////////////////////
+//
+// Private variables and functions related to terminal output
+//
 	int	rows, columns;
-	//
-	////////////////////////////////////////////////////////////////////////////
+	int	listStartRow, listEndRow;
+	int	header1Row, header2Row;
+
+	std::string	itemListColor;
+
+	struct termios orig_termios;
+	struct termios initialTerminalState;
+
+	void	saveTerminalState(termios &_originalTermios);
+	void	restoreTerminalState(const termios &_originalTermios);
+	void	die(const char *s);
+	void	disableRawMode(void);
+	void	enableRawMode(void);
+	void	print(int _x, int _y, std::string _text);
+	void	setupDisplay(void);
+	void	terminalSize(void);
+	void	clearScreen(void);
+	void	printHeaders(void);
+	void	printSessionList(unsigned long _startItem);
+////////////// T E R M I N A L  O U T P U T ////////////////////////////////////
+
 
 
 	////////////////////////////////////////////////////////////////////////////
@@ -174,15 +193,7 @@ class ivsSessions{
 
 
 
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// Private functions related to screen output
-	//
-	void	setupDisplay(void);
-	void	terminalSize(void);
-	void	printHeaders(void);
-	void	printSessionList(unsigned long _startItem);
-	////////////////////////////////////////////////////////////////////////////
+
 
 
 public:

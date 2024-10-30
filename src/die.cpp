@@ -1,5 +1,5 @@
 /*
- * setupDisplay.cpp
+ * die.cpp
  *
  *  Created on: 30 Oct 2024
  *      Author: jole
@@ -14,15 +14,8 @@
 //
 //
 ////////////////////////////////////////////////////////////////////////////////
-void ivsSessions::setupDisplay(void)
+void ivsSessions::die(const char *s)
 {
-	terminalSize();	// loads terminal size into memory, rows and columns
-	enableRawMode();
-	clearScreen();
-
-
-	header1Row		= 2;
-	header2Row		= 3;
-	listStartRow	= header2Row + 2;
-	listEndRow		= rows - 3;
+	perror(s);
+	exit(1);
 }

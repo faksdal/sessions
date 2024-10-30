@@ -28,6 +28,17 @@ void ivsSessions::terminalSize(void)
     columns	= ws.ws_col;
     rows	= ws.ws_row;
 
-    // TODO: print for debug purposes
-	std::cout << "Display size: rows: " << rows << ", columns: " << columns << std::endl;
+    /*
+    if (1 || ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == -1 || ws.ws_col == 0) {
+    	//if (write(STDOUT_FILENO, "\x1b[999C\x1b[999B", 12) != 12)
+    		//return;
+    	//editorReadKey();
+    	//return;
+    }
+    else{
+    	columns = ws.ws_col;
+    	rows = ws.ws_row;
+    	//return;
+    }
+	*/
 }

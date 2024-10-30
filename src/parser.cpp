@@ -290,6 +290,7 @@ void ivsSessions::parser(void)
 		}
 	}
 
-	//std::cout << std::endl;
+	// Initialize the list with the first item to be highlighted
+	sessionList[0].highlighted = true;
 }
 

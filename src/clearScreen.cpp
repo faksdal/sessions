@@ -1,9 +1,11 @@
 /*
- * setupDisplay.cpp
+ * clearScreen.cpp
  *
  *  Created on: 30 Oct 2024
  *      Author: jole
  */
+
+#include <unistd.h>		// STDOUT_FILENO, TIOCGWINSZ
 
 #include "vlbi-sessions.h"
 
@@ -14,15 +16,9 @@
 //
 //
 ////////////////////////////////////////////////////////////////////////////////
-void ivsSessions::setupDisplay(void)
+void ivsSessions::clearScreen(void)
 {
-	terminalSize();	// loads terminal size into memory, rows and columns
-	enableRawMode();
-	clearScreen();
-
-
-	header1Row		= 2;
-	header2Row		= 3;
-	listStartRow	= header2Row + 2;
-	listEndRow		= rows - 3;
+	// Clear the terminal
+	//std::cout << "\033[2J\033[1;1H" << std::flush;
+	write(STDOUT_FILENO, "\x1b[2J", 4);
 }

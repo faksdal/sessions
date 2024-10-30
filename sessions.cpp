@@ -77,16 +77,19 @@ int main(int argc, char **argv)
 
 
 	if(inputFileNameSet){
-		ivsSessions *s = new ivsSessions(inputFileName);
+		//ivsSessions *s = new ivsSessions(inputFileName);
+		ivsSessions s(inputFileName);
 
+		/*
 		if(!s){
 			std::cerr << "Memory allocation failed! " << std::endl;
 			std::cerr << "[ERROR] main(): failed to create object: ivsSessions(), exiting..." << std::endl;
 			exit(-1);
 		}
+		*/
 
-		s->run();
-		delete s;
+		s.run();
+		//delete s;
 
 	}
 	else{

@@ -1,9 +1,11 @@
 /*
- * setupDisplay.cpp
+ * print.cpp
  *
  *  Created on: 30 Oct 2024
  *      Author: jole
  */
+
+#include <iostream>
 
 #include "vlbi-sessions.h"
 
@@ -14,15 +16,7 @@
 //
 //
 ////////////////////////////////////////////////////////////////////////////////
-void ivsSessions::setupDisplay(void)
+void ivsSessions::print(int _x, int _y, std::string _text)
 {
-	terminalSize();	// loads terminal size into memory, rows and columns
-	enableRawMode();
-	clearScreen();
-
-
-	header1Row		= 2;
-	header2Row		= 3;
-	listStartRow	= header2Row + 2;
-	listEndRow		= rows - 3;
+	std::cout << "\033[" << _y << ";" << _x << "H" << _text << std::flush;
 }
