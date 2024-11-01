@@ -55,4 +55,5 @@ void ivsSessions::printSessionList(unsigned long _startItem)
 				break;
 		}
 	}
+	activeRow = listStartRow;
 }
