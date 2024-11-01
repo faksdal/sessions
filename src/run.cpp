@@ -36,6 +36,6 @@ void ivsSessions::run(void)
 	printSessionList(0);
 
 	while(1){
-		processKeypress();
+		processKeypress(STDIN_FILENO);
 	}
 }

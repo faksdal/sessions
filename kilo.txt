@@ -1191,6 +1191,7 @@ void editorProcessKeypress(int fd) {
     static int quit_times = KILO_QUIT_TIMES;
 
     int c = editorReadKey(fd);
+
     switch(c) {
     case ENTER:         /* Enter */
         editorInsertNewline();
