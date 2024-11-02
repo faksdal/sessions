@@ -35,7 +35,9 @@ void ivsSessions::run(void)
 	printHeaders();
 	printSessionList(0);
 
+	/*
 	while(1){
 		processKeypress(STDIN_FILENO);
 	}
+	*/
 }

@@ -166,8 +166,8 @@ class ivsSessions{
 // Private functions and variables related to keybard input
 //
 	short	activeRow;
-	char	readKey(int _fd);
-	void	processKeypress(int _fd);
+	//char	readKey(int _fd);
+	//void	processKeypress(int _fd);
 
 
 /////////////// K E Y B O A R D  I N P U T ///////////////////////////////////
