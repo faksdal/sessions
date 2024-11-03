@@ -23,22 +23,8 @@ void ivsSessions::terminalSize(void)
 		std::cerr << "Error: Unable to get terminal size" << std::endl;
 		return;
 	}
-
 	// Assign terminal size to variables
-    columns	= ws.ws_col;
-    rows	= ws.ws_row;
+    db.terminal_columns	= ws.ws_col;
+    db.terminal_rows	= ws.ws_row;
 
-    /*
-    if (1 || ioctl(STDOUT_FILENO, TIOCGWINSZ, &ws) == -1 || ws.ws_col == 0) {
-    	//if (write(STDOUT_FILENO, "\x1b[999C\x1b[999B", 12) != 12)
-    		//return;
-    	//editorReadKey();
-    	//return;
-    }
-    else{
-    	columns = ws.ws_col;
-    	rows = ws.ws_row;
-    	//return;
-    }
-	*/
 }

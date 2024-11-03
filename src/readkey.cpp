@@ -15,7 +15,7 @@
 
 #include "keyboard.h"
 
-int keyboard::readkey(void)
+int keyboard::readkey(int _fd)
 {
 	int			seqCnt = 0, retkey = -1;
 	keyState	state;
@@ -23,7 +23,7 @@ int keyboard::readkey(void)
 	char		seq[4];
 
 
-	if(read(fd, &c, 1) == 1){
+	if(read(_fd, &c, 1) == 1){
 		//std::cout << "key: " << (int)c << std::endl;
 		state = keyState::NORMAL;
 		// If we encounter an escape sequence, we start populate the seq[]
@@ -32,16 +32,16 @@ int keyboard::readkey(void)
 			// If we have indications of an escape sequence, we try another
 			// read()
 			state = keyState::ESCAPE_SEQ_0;
-			if(read(fd, &seq[seqCnt], 1) > 0){
+			if(read(_fd, &seq[seqCnt], 1) > 0){
 				seqCnt++;
 				state = keyState::ESCAPE_SEQ_1;
-				if(read(fd, &seq[seqCnt], 1) > 0){
+				if(read(_fd, &seq[seqCnt], 1) > 0){
 					seqCnt++;
 					state = keyState::ESCAPE_SEQ_2;
-					if(read(fd, &seq[seqCnt], 1) > 0){
+					if(read(_fd, &seq[seqCnt], 1) > 0){
 						seqCnt++;
 						state = keyState::ESCAPE_SEQ_3;
-						if(read(fd, &seq[seqCnt], 1) > 0){
+						if(read(_fd, &seq[seqCnt], 1) > 0){
 							state = keyState::ESCAPE_SEQ_4;
 						}
 					}

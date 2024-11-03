@@ -10,6 +10,8 @@
 #include <fstream>
 #include <termios.h>
 
+#include "keyboard.h"
+
 
 
 ////////////// S E S S I O N L I S T  D E F I N I T I O N //////////////////////
@@ -165,9 +167,7 @@ class ivsSessions{
 //
 // Private functions and variables related to keybard input
 //
-	short	activeRow;
-	//char	readKey(int _fd);
-	//void	processKeypress(int _fd);
+	void	processKeypress(int _key, bool& _quit);
 
 
 /////////////// K E Y B O A R D  I N P U T ///////////////////////////////////
@@ -179,26 +179,37 @@ class ivsSessions{
 //
 // Private variables and functions related to terminal output
 //
-	int	rows, columns;
-	int	listStartRow, listEndRow;
-	int	header1Row, header2Row;
+	class displayBoundaries{
+	public:
+		int	terminal_rows, terminal_columns;
+		int	terminal_list_start_row, terminal_list_end_row;
+		int	terminal_header_1_row, terminal_header_2_row;
+	};
+
+	//int		rows, columns;
+	//int		listStartRow, listEndRow;
+	//int		header1Row, header2Row;
+
+	short	activeRow;
 
 	std::string	itemListColor;
 
-	struct termios orig_termios;
-	struct termios initialTerminalState;
+	displayBoundaries db;
+
+	//struct termios orig_termios;
+	//struct termios initialTerminalState;
 
 	void	saveTerminalState(termios &_originalTermios);
 	void	restoreTerminalState(const termios &_originalTermios);
 	void	die(const char *s);
-	void	disableRawMode(void);
-	void	enableRawMode(void);
+	//void	disableRawMode(void);
+	//void	enableRawMode(void);
 	void	print(int _x, int _y, std::string _text);
 	void	setupDisplay(void);
 	void	terminalSize(void);
 	void	clearScreen(void);
 	void	printHeaders(void);
-	void	printSessionList(unsigned long _startItem);
+	void	printSessionList(unsigned long _startItem, short _activeRow);
 ////////////// T E R M I N A L  O U T P U T ////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 

@@ -17,12 +17,12 @@
 void ivsSessions::setupDisplay(void)
 {
 	terminalSize();	// loads terminal size into memory, rows and columns
-	enableRawMode();
 	clearScreen();
 
+	db.terminal_header_1_row	= 2;
+	db.terminal_header_2_row	= 3;
+	db.terminal_list_start_row	= db.terminal_header_2_row + 2;
+	db.terminal_list_end_row	= db.terminal_rows - 3;
 
-	header1Row		= 2;
-	header2Row		= 3;
-	listStartRow	= header2Row + 2;
-	listEndRow		= rows - 3;
+	print(1, 3, "Filter:");
 }

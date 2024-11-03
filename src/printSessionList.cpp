@@ -24,12 +24,14 @@
 // What do I need to make this happen?
 //
 ////////////////////////////////////////////////////////////////////////////////
-void ivsSessions::printSessionList(unsigned long _startItem)
+void ivsSessions::printSessionList(unsigned long _startItem, short _activeRow)
 {
 	int x, y;
 
 	x	= 1;
-	y	= listStartRow;
+	y	= db.terminal_list_start_row;
+
+
 
 	for(unsigned long i = _startItem; i < sessionList.size(); i++){
 		if(sessionList[i].visible){
@@ -51,9 +53,10 @@ void ivsSessions::printSessionList(unsigned long _startItem)
 						+	sessionList[i].subm
 						+	sessionList[i].del);
 			y++;
-			if(y >= listEndRow)
+			if(y >= db.terminal_list_end_row)
 				break;
 		}
 	}
-	activeRow = listStartRow;
+	//activeRow = listStartRow;
+	activeRow = _activeRow;
 }

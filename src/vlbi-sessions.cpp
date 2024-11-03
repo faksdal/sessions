@@ -28,19 +28,19 @@
 ////////////////////////////////////////////////////////////////////////////////
 ivsSessions::ivsSessions(std::string _inputFileName)
 {
-	fo_inputFileName	= _inputFileName;
-	intensiveFlag		= false;
-	fo_inputBufferIndex	= 0;
-	rows				= 0;
-	columns				= 0;
-	ptr					= 0;
-	state				= State::READY;
-	listEndRow			= 0;
-	listStartRow		= 0;
-	_highlighted		= 0;
-	_visible			= 0;
-	header1Row			= 0;
-	header2Row			= 0;
+	fo_inputFileName			= _inputFileName;
+	intensiveFlag				= false;
+	fo_inputBufferIndex			= 0;
+	db.terminal_rows			= 0;
+	db.terminal_columns			= 0;
+	ptr							= 0;
+	state						= State::READY;
+	db.terminal_list_end_row	= 0;
+	db.terminal_list_start_row	= 0;
+	_highlighted				= 0;
+	_visible					= 0;
+	db.terminal_header_1_row	= 0;
+	db.terminal_header_2_row	= 0;
 }
 
 
@@ -50,14 +50,15 @@ ivsSessions::ivsSessions(std::string _inputFileName)
 ////////////////////////////////////////////////////////////////////////////////
 ivsSessions::~ivsSessions()
 {
+	// OBSOLETE: this is handled by keyboard input class
 	// Restore terminal to previous state
-	disableRawMode();
+	//disableRawMode();
 
 	// Restore display
-	system("tput rmcup");
+	//system("tput rmcup");
 
 	// Print a nice thank-you-message to the user :-)
-	std::cout << "\r\nThank you for using sessions!\n\r";
+	std::cout << "\r\nThank you for using sessions!\r\n";
 }
 
 

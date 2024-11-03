@@ -6,7 +6,7 @@
  */
 //#include <iostream>
 
-//#include <unistd.h>
+#include <unistd.h>
 //#include <termios.h>
 
 #include "keyboard.h"
@@ -15,5 +15,5 @@
 
 void keyboard::disableRawMode(void)
 {
-	tcsetattr(fd, TCSAFLUSH, &originalTermios);
+	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &originalTermios);
 }

@@ -30,10 +30,12 @@ class keyboard{
 	void	enableRawMode(void);
 
 public:
-	keyboard(int _fd);
+	keyboard();
 	~keyboard();
 
-	int	readkey(void);
+	int		readkey(int _fd);
+	void	hideCursor(void);
+	void	showCursor(void);
 
 };
 

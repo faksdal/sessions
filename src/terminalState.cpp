@@ -42,7 +42,7 @@ void ivsSessions::restoreTerminalState(const termios &_originalTermios)
 }
 
 
-
+/*
 ////////////////////////////////////////////////////////////////////////////////
 //
 //
@@ -82,6 +82,4 @@ void ivsSessions::disableRawMode(void)
 	if(tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios) == -1)
 		die("tcsetattr");
 }
-
-
-
+*/

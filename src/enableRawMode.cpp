@@ -6,6 +6,8 @@
  */
 
 #include <cstdlib>
+#include <iostream>
+
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -21,7 +23,7 @@ void keyboard::enableRawMode(void)
 	struct termios raw = originalTermios;
 
 
-	tcgetattr(fd, &originalTermios);
+	tcgetattr(STDOUT_FILENO, &originalTermios);
 
 	raw.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
 	raw.c_oflag &= ~(OPOST);
@@ -30,7 +32,9 @@ void keyboard::enableRawMode(void)
 	raw.c_lflag &= ~(ECHO | ICANON | IEXTEN);
 	raw.c_cc[VMIN] = 0;
 	raw.c_cc[VTIME] = 1;
-	tcsetattr(fd, TCSAFLUSH, &raw);
+	tcsetattr(STDOUT_FILENO, TCSAFLUSH, &raw);
+
+	//std::cout << "\r\nkeyboard::enableRawMode\r\n" << std::flush;
 }
 
 

@@ -10,7 +10,7 @@
 //		- ASCII-table https://www.asciitable.com/
 //		- https://www.man7.org/linux/man-pages/man2/read.2.html
 
-//#include <iostream>
+#include <iostream>
 
 //#include <unistd.h>
 //#include <termios.h>
@@ -19,10 +19,8 @@
 
 
 
-keyboard::keyboard(int _fd)
+keyboard::keyboard()
 {
-	fd = _fd;
-	//fd = STDIN_FILENO;
 	enableRawMode();
 }
 
@@ -32,3 +30,21 @@ keyboard::~keyboard()
 {
 	disableRawMode();
 }
+
+
+
+void keyboard::hideCursor(void)
+{
+	// ANSI escape code to hide the cursor
+	std::cout << "\033[?25l" << std::flush;
+}
+
+
+
+void keyboard::showCursor(void)
+{
+	// ANSI escape code to show the cursor
+	std::cout << "\033[?25h" << std::flush;
+}
+
+
