@@ -13,18 +13,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// What do I want form this function?
-//		- I want it to print the session list to the visible screen, starting
-// 			from _startItem.
-//		- I only want printed those items that are set to .visible.
-//		- I want the top-most item displayed to be highlighted, initially. Later
-//			I want to be able to use the keyboard to select other items in the
-//			list to be highlighted.
+// Prints the sessions to terminal once, as the program launches. Sub-sequent
+// draws are done by redraw().
 //
-// What do I need to make this happen?
+// TODO: Look into how I can make it all with njust the redraw()-function
 //
 ////////////////////////////////////////////////////////////////////////////////
-void ivsSessions::printSessionList(unsigned long _startItem, short _activeRow)
+void ivsSessions::printSessionList(void)
 {
 	int x, y;
 
@@ -33,7 +28,7 @@ void ivsSessions::printSessionList(unsigned long _startItem, short _activeRow)
 
 
 
-	for(unsigned long i = _startItem; i < sessionList.size(); i++){
+	for(unsigned long i = 0; i < sessionList.size(); i++){
 		if(sessionList[i].visible){
 			sessionList[i].highlighted	? itemListColor = "\033[30;102m"
 										: itemListColor = "\033[40;00m";	// white text, default background
@@ -57,6 +52,9 @@ void ivsSessions::printSessionList(unsigned long _startItem, short _activeRow)
 				break;
 		}
 	}
-	//activeRow = listStartRow;
-	activeRow = _activeRow;
+	db.terminal_current_topmost_session		= 0;
+	db.terminal_current_highlighted_session	= 0;
+	db.terminal_current_highlighted_row		= db.terminal_list_start_row;
+
+
 }

@@ -181,35 +181,35 @@ class ivsSessions{
 //
 	class displayBoundaries{
 	public:
-		int	terminal_rows, terminal_columns;
-		int	terminal_list_start_row, terminal_list_end_row;
-		int	terminal_header_1_row, terminal_header_2_row;
+		int		terminal_rows,
+				terminal_columns,
+				terminal_list_start_row,
+				terminal_list_end_row,
+				terminal_header_1_row,
+				terminal_header_2_row;
+
+		short	terminal_current_highlighted_row;
+
+		unsigned long	terminal_current_highlighted_session,
+						terminal_current_topmost_session;
 	};
-
-	//int		rows, columns;
-	//int		listStartRow, listEndRow;
-	//int		header1Row, header2Row;
-
-	short	activeRow;
 
 	std::string	itemListColor;
 
 	displayBoundaries db;
 
-	//struct termios orig_termios;
-	//struct termios initialTerminalState;
-
 	void	saveTerminalState(termios &_originalTermios);
 	void	restoreTerminalState(const termios &_originalTermios);
 	void	die(const char *s);
-	//void	disableRawMode(void);
-	//void	enableRawMode(void);
+	void	moveCursor(int _x, int _y);
 	void	print(int _x, int _y, std::string _text);
 	void	setupDisplay(void);
 	void	terminalSize(void);
 	void	clearScreen(void);
 	void	printHeaders(void);
-	void	printSessionList(unsigned long _startItem, short _activeRow);
+	void	printSessionList(void);
+	void	printSession(short _row, unsigned long _sessionId, std::string _sessionColor);
+	void	redraw(short _offset);
 ////////////// T E R M I N A L  O U T P U T ////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 

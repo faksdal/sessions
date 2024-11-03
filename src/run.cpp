@@ -23,10 +23,12 @@
 void ivsSessions::run(void)
 {
 
-	int			key;
-	int			fd		= STDIN_FILENO;
-	bool		quit = false;
-	keyboard	kb;
+	int				key;
+	int				fd		= STDIN_FILENO;
+	bool			quit	= false;
+	keyboard		kb;
+
+	db.terminal_current_highlighted_row = 5;
 
 
 	// Save the current terminal screen, so we can restore upon exit
@@ -46,16 +48,21 @@ void ivsSessions::run(void)
 	// Print descriptive list headers previously read from input file
 	printHeaders();
 
-	printSessionList(0, db.terminal_list_start_row);
-	//printSessionList(0, 2);
+	// Prints the initial list to terminal
+	// Updates as the user moves around will be done by redraw().
+	printSessionList();
+
+	// Draws up the sessions in terminal.
+	// redraw() updates db.terminal_current_highlighted_row
+	// startSession is updated by run()
+	//redraw(db.terminal_current_highlighted_row, startSession);
 
 	while(!quit){
 		if((key = kb.readkey(fd)) != -1){
 			processKeypress(key, quit);
-
 		} // if((key = kb.readkey(fd)) != -1)
 
-		// here I can do other stuff
+		// here, I can do other stuff
 
 	} // while(!quit)
 

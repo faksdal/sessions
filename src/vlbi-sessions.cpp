@@ -63,13 +63,13 @@ ivsSessions::~ivsSessions()
 
 
 
-/*
+
 void ivsSessions::moveCursor(int _x, int _y)
 {
 	std::cout << "\033[" << _y << ";" << _x << "H" << std::flush;
 }
 
-
+/*
 
 char ivsSessions::readKey(void)
 {
