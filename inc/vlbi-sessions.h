@@ -71,6 +71,14 @@ enum class State{	READY,
 };
 ////////////////////////////////////////////////////////////////////////////////
 
+/////////////F I L T E R  C L A S S  D E F I N I T I O N////////////////////////
+class Filter{
+public:
+	int			filterColumn, filterRow;
+	bool		active;
+	std::string	filterName, filterText, filterColor;
+};
+////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////// C L A S S  D E F I N I T I O N ///////////////////////////////
@@ -81,9 +89,9 @@ enum class State{	READY,
 class ivsSessions{
 
 ////////////////////////// C O M M O N S ///////////////////////////////////////
-	//
-	// Common variables
-	//
+//
+// Common variables
+//
 	// True if session is intensive, false otherwise. We need to know if the
 	// session is intensive, because the file layout differs between the two.
 	bool	intensiveFlag;
@@ -150,8 +158,8 @@ class ivsSessions{
 	std::string		header1, header2;
 	std::string		fileFormat;
 	unsigned long	fo_inputBufferIndex;
-	State		state;
-	const char*	ptr;
+	State			state;
+	const char*		ptr;
 
 	bool	setIntensiveFlag(void);
 	void	clearAllBuffers(void);
@@ -167,6 +175,8 @@ class ivsSessions{
 //
 // Private functions and variables related to keybard input
 //
+	keyboard		kb;
+
 	void	processKeypress(int _key, bool& _quit);
 
 
@@ -212,6 +222,24 @@ class ivsSessions{
 	void	redraw(short _offset);
 ////////////// T E R M I N A L  O U T P U T ////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+
+///////////////////F I L T E R  D E F I N I T I O N S///////////////////////////
+
+	/*class Filter{
+	public:
+		int			filterColumn, filterRow;
+		bool		active;
+		std::string	filterName, filterText, filterColor;
+	};*/
+
+	std::vector<Filter>	filter;
+
+	void	setupFilters(void);
+	void	printFilters(void);
+
+///////////////////F I L T E R  D E F I N I T I O N S///////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
 
 
 public:

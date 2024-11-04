@@ -24,18 +24,22 @@ class keyboard{
 	};
 
 	int		fd;
-	struct termios originalTermios;
+	struct	termios originalTermios;
 
-	void	disableRawMode(void);
 	void	enableRawMode(void);
 
 public:
 	keyboard();
 	~keyboard();
 
+	int	cursorRow, cursorColumn;
+
 	int		readkey(int _fd);
 	void	hideCursor(void);
 	void	showCursor(void);
+	void	moveCursor(int _x, int _y);
+	void	disableRawMode(void);
+	void	updateCursorValues(void);
 
 };
 

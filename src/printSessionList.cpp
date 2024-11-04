@@ -27,6 +27,7 @@ void ivsSessions::printSessionList(void)
 	y	= db.terminal_list_start_row;
 
 
+	kb.hideCursor();
 
 	for(unsigned long i = 0; i < sessionList.size(); i++){
 		if(sessionList[i].visible){
@@ -52,6 +53,7 @@ void ivsSessions::printSessionList(void)
 				break;
 		}
 	}
+	kb.showCursor();
 	db.terminal_current_topmost_session		= 0;
 	db.terminal_current_highlighted_session	= 0;
 	db.terminal_current_highlighted_row		= db.terminal_list_start_row;

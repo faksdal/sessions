@@ -18,6 +18,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 void ivsSessions::printHeaders(void)
 {
-	print(1, 1, header1);
-	print(1, 2, header2);
+	print(1, 1, "\033[40;00m" + header1);
+	print(1, 2, "\033[40;00m" + header2);
 }

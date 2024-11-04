@@ -13,6 +13,7 @@
 
 void ivsSessions::printSession(short _row, unsigned long _sessionId, std::string _sessionColor)
 {
+	kb.hideCursor();
 	print(1, _row,	_sessionColor
 				+	sessionList[_sessionId].sessionType
 				+	sessionList[_sessionId].date
@@ -27,6 +28,8 @@ void ivsSessions::printSession(short _row, unsigned long _sessionId, std::string
 				+	sessionList[_sessionId].dbcCode
 				+	sessionList[_sessionId].subm
 				+	sessionList[_sessionId].del);
+	kb.showCursor();
+	kb.moveCursor(kb.cursorColumn, kb.cursorRow);
 }
 
 
@@ -40,10 +43,6 @@ void ivsSessions::printSession(short _row, unsigned long _sessionId, std::string
 void ivsSessions::redraw(short _offset)
 {
 	std::string	regular, highlighted;
-	//short	x, y;
-
-	//x	= 1;
-	//y	= db.terminal_list_start_row;
 
 	//db.terminal_current_topmost_session
 	//db.terminal_current_highlighted_row

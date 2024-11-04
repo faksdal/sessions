@@ -41,6 +41,9 @@ ivsSessions::ivsSessions(std::string _inputFileName)
 	_visible					= 0;
 	db.terminal_header_1_row	= 0;
 	db.terminal_header_2_row	= 0;
+
+	// Save the current terminal screen, so we can restore upon exit
+	system("tput smcup");
 }
 
 
@@ -55,7 +58,7 @@ ivsSessions::~ivsSessions()
 	//disableRawMode();
 
 	// Restore display
-	//system("tput rmcup");
+	system("tput rmcup");
 
 	// Print a nice thank-you-message to the user :-)
 	std::cout << "\r\nThank you for using sessions!\r\n";
@@ -63,11 +66,12 @@ ivsSessions::~ivsSessions()
 
 
 
-
+/*
 void ivsSessions::moveCursor(int _x, int _y)
 {
 	std::cout << "\033[" << _y << ";" << _x << "H" << std::flush;
 }
+*/
 
 /*
 

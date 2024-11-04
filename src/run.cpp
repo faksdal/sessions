@@ -13,6 +13,18 @@
 #include "keyboard.h"
 #include "vlbi-sessions.h"
 
+bool keypressed(void)
+{
+	struct timeval tv = {0, 0}; // No timeout
+	fd_set readfds;
+
+	FD_ZERO(&readfds);
+	FD_SET(STDIN_FILENO, &readfds);
+
+	return select(STDIN_FILENO + 1, &readfds, nullptr, nullptr, &tv) == 1;
+
+}
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -26,13 +38,10 @@ void ivsSessions::run(void)
 	int				key;
 	int				fd		= STDIN_FILENO;
 	bool			quit	= false;
-	keyboard		kb;
+	//keyboard		kb;
 
 	db.terminal_current_highlighted_row = 5;
 
-
-	// Save the current terminal screen, so we can restore upon exit
-	//system("tput smcup");
 
 	// Read from inputfile and parse the content.
 	// The parser populates the sessionList, making it available
@@ -40,10 +49,14 @@ void ivsSessions::run(void)
 	readfile();
 	parser();
 
-	kb.hideCursor();
+	//kb.hideCursor();
 
 	// Sets up the static parts of the display
 	setupDisplay();
+
+	// Set up the input filters
+	setupFilters();
+	printFilters();
 
 	// Print descriptive list headers previously read from input file
 	printHeaders();
@@ -52,6 +65,12 @@ void ivsSessions::run(void)
 	// Updates as the user moves around will be done by redraw().
 	printSessionList();
 
+	kb.cursorColumn = 53;
+	kb.cursorRow = 4;
+	kb.moveCursor(kb.cursorColumn, kb.cursorRow);
+
+	kb.updateCursorValues();
+
 	// Draws up the sessions in terminal.
 	// redraw() updates db.terminal_current_highlighted_row
 	// startSession is updated by run()
@@ -59,12 +78,13 @@ void ivsSessions::run(void)
 
 	while(!quit){
 		if((key = kb.readkey(fd)) != -1){
-			processKeypress(key, quit);
+				processKeypress(key, quit);
 		} // if((key = kb.readkey(fd)) != -1)
+
 
 		// here, I can do other stuff
 
 	} // while(!quit)
 
-	kb.showCursor();
+	//kb.showCursor();
 }
