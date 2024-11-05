@@ -177,7 +177,7 @@ class ivsSessions{
 //
 	keyboard		kb;
 
-	void	processKeypress(int _key, bool& _quit);
+	void	processKeypress(bool& _quit);
 
 
 /////////////// K E Y B O A R D  I N P U T ///////////////////////////////////
@@ -213,6 +213,7 @@ class ivsSessions{
 	void	die(const char *s);
 	void	moveCursor(int _x, int _y);
 	void	print(int _x, int _y, std::string _text);
+	void	print(int _x, int _y, unsigned long _num);
 	void	setupDisplay(void);
 	void	terminalSize(void);
 	void	clearScreen(void);
@@ -236,6 +237,8 @@ class ivsSessions{
 
 	void	setupFilters(void);
 	void	printFilters(void);
+	void	nextFilter(void);
+	void	addFilter(int _key);
 
 ///////////////////F I L T E R  D E F I N I T I O N S///////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

@@ -4,6 +4,7 @@
  *  Created on: Nov 4, 2024
  *      Author: leijon
  */
+#include <iostream>
 
 #include "vlbi-sessions.h"
 
@@ -13,6 +14,55 @@
 		bool		active;
 		std::string	filterName, filterText, filterColor;
 	};*/
+
+
+
+void ivsSessions::addFilter(int _key)
+{
+	unsigned long i = 0;
+
+	while(!filter[i++].active);
+	i--;
+
+	print(1, 33, "         ");
+	print(1, 33, i);
+
+	filter[i].filterText.append(1, _key);
+
+	print(1, 34, "         ");
+	print(1, 34, filter[i].filterName);
+	print(1, 35, "         ");
+	print(1, 35, filter[i].filterText);
+
+	kb.moveCursor(kb.cursorColumn, kb.cursorRow);
+}
+
+
+
+void ivsSessions::nextFilter(void)
+{
+	unsigned long i;
+
+	for(i = 0; i < filter.size(); i++){
+		if(filter[i].active){
+			filter[i].active = false;
+			if(i+1 == filter.size()){
+				i = 0;
+				filter[i].active = true;
+				break;
+			}
+			else{
+				i++;
+				filter[i].active = true;
+				break;
+			}
+		}
+	}
+
+	kb.cursorColumn	=  filter[i].filterColumn;
+	kb.cursorRow	=  filter[i].filterRow;
+	kb.moveCursor(kb.cursorColumn, kb.cursorRow);
+}
 
 
 
@@ -68,7 +118,7 @@ void ivsSessions::setupFilters(void)
 	_filterColumn += sessionList[0].time.length() - 1;
 	_filterColumn += sessionList[0].dur.length() - 1;
 	_filterRow		= 4;
-	_active			= false;
+	_active			= true;
 	_filterName		= "STATIONS";
 	_filterText		= "";
 	_filterColor	= "\033[40;00m";

@@ -35,8 +35,8 @@ bool keypressed(void)
 void ivsSessions::run(void)
 {
 
-	int				key;
-	int				fd		= STDIN_FILENO;
+	//int				key = 0;
+	//int				fd		= STDIN_FILENO;
 	bool			quit	= false;
 	//keyboard		kb;
 
@@ -77,9 +77,13 @@ void ivsSessions::run(void)
 	//redraw(db.terminal_current_highlighted_row, startSession);
 
 	while(!quit){
+		processKeypress(quit);
+
+		/*
 		if((key = kb.readkey(fd)) != -1){
 				processKeypress(key, quit);
 		} // if((key = kb.readkey(fd)) != -1)
+		*/
 
 
 		// here, I can do other stuff

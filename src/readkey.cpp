@@ -17,6 +17,61 @@
 
 int keyboard::readkey(int _fd)
 {
+
+	int nread;
+	char c;
+
+	while ((nread = read(STDIN_FILENO, &c, 1)) != 1){
+		if (nread == -1 && errno != EAGAIN)
+			exit(-1);//die("read");
+	} // while ((nread = read(STDIN_FILENO, &c, 1)) != 1)
+
+	if (c == '\x1b'){
+		char seq[3];
+
+		if (read(STDIN_FILENO, &seq[0], 1) != 1) return '\x1b';
+		if (read(STDIN_FILENO, &seq[1], 1) != 1) return '\x1b';
+
+		if (seq[0] == '['){
+			if (seq[1] >= '0' && seq[1] <= '9'){
+				if (read(STDIN_FILENO, &seq[2], 1) != 1) return '\x1b';
+			if (seq[2] == '~'){
+				switch(seq[1]){
+					case '1': return HOME;
+					case '3': return DELETE;
+					case '4': return END;
+					case '5': return PAGE_UP;
+					case '6': return PAGE_DOWN;
+					case '7': return HOME;
+					case '8': return END;
+				} // switch(seq[1])
+			}
+			}
+			else{
+				switch(seq[1]){
+					case 'A': return UP_ARROW;
+					case 'B': return DOWN_ARROW;
+					case 'C': return RIGHT_ARROW;
+					case 'D': return LEFT_ARROW;
+					case 'H': return HOME;
+					case 'F': return END;
+				} // switch(seq[1])
+			}
+	    } // if (seq[0] == '[')
+		else if(seq[0] == 'O'){
+			switch(seq[1]){
+				case 'H': return HOME;
+				case 'F': return END;
+			}
+		}
+		return '\x1b';
+	} // if (c == '\x1b')
+	else{
+		return c;
+	}
+
+
+	  /*
 	int			seqCnt = 0, retkey = -1;
 	keyState	state;
 	char		c = '\0';
@@ -113,4 +168,6 @@ int keyboard::readkey(int _fd)
 	} // if(read(_fd, &c, 1) == 1)
 
 	return retkey;
+	*/
+
 }
