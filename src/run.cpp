@@ -78,14 +78,6 @@ void ivsSessions::run(void)
 
 	while(!quit){
 		processKeypress(quit);
-
-		/*
-		if((key = kb.readkey(fd)) != -1){
-				processKeypress(key, quit);
-		} // if((key = kb.readkey(fd)) != -1)
-		*/
-
-
 		// here, I can do other stuff
 
 	} // while(!quit)

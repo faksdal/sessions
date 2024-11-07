@@ -25,22 +25,6 @@
 void ivsSessions::processKeypress(bool& _quit)
 {
 	int key = kb.readkey(STDIN_FILENO);
-	/*
-	switch(c){
-		case UP_ARROW:		std::cout << "UP_ARROW\r\n" << std::flush;
-							break;
-		case DOWN_ARROW:	std::cout << "DOWN_ARROW\r\n" << std::flush;
-							break;
-		case LEFT_ARROW:	break;
-		case RIGHT_ARROW:	//editorMoveCursor(c);
-							break;
-		case ESC:			_quit = true;
-							break;
-		default:			//editorInsertChar(c);
-							break;
-	} // switch(c)
-	*/
-
 
 
 	switch(key){
